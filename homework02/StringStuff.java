@@ -1,8 +1,8 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  *  File name     :  StringStuff.java
  *  Purpose       :  A file full of stuff to do with the Java String class
- *  Author        :  B.J. Johnson
- *  Date          :  2017-01-19
+ *  Author        :  Quinn Lanners
+ *  Date          :  2018-02-01
  *  Description   :  This file presents a bunch of String-style helper methods.  Although pretty much
  *                   any and every thing you'd want to do with Strings is already made for you in the
  *                   Jave String class, this exercise gives you a chance to do it yourself [DIY] for some
@@ -18,6 +18,7 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-01-19  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-01-22  B.J. Johnson  Fill in methods to make the program actually work
+ *  @version 2.0.0  2018-02-01  Quinn Lanners Fileld in skeleton of methods to make methods functionable
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Set;
 import java.util.LinkedHashSet;
@@ -25,6 +26,7 @@ import java.util.LinkedHashSet;
 public class StringStuff {
 
    private static final String[] vowels = {"a","e","i","o","u","A","E","I","O","U"};
+   private static final String alphabet = new String("abcdefghijklmnopqrstuvwxyz");
 
   /**
    * Method to determine if a string contains one of the vowels: A, E, I, O, U, and sometimes Y.
@@ -53,7 +55,15 @@ public class StringStuff {
    * @return  boolean which is true if this a palindrome, or false otherwise
    */
    public static boolean isPalindrome( String s ) {
-      return true;
+     StringBuilder reversed = new StringBuilder("");
+     for (int i = (s.length()-1); i >= 0; i--) {
+     	reversed.append(s.charAt(i));
+     }
+     if (s.contentEquals(reversed)) {
+     	return true;
+     } else {
+     	return false;
+     }
    }
 
   /**
@@ -65,7 +75,14 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input
    */
    public static String evensOnly( String s ) {
-      return new String( "HJHJHJ" );
+      String s_lower = s.toLowerCase();
+      StringBuilder even_word = new StringBuilder("");
+      for (int i = 0; i<=(s_lower.length()-1); i++) {
+      	if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 == 0)) {
+      		even_word.append(s.charAt(i));
+      	}
+      }
+      return even_word.toString();
    }
 
   /**
@@ -77,7 +94,14 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input
    */
    public static String oddsOnly( String s ) {
-      return new String( "IKIKIK" );
+      String s_lower = s.toLowerCase();
+      StringBuilder odd_word = new StringBuilder("");
+      for (int i = 0; i<=(s_lower.length()-1); i++) {
+      	if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 != 0)) {
+      		odd_word.append(s.charAt(i));
+      	}
+      }
+      return odd_word.toString();
    }
 
   /**
@@ -88,7 +112,9 @@ public class StringStuff {
    * @return  String containing the &quot;even&quot; letters from the input without duplicates
    */
    public static String evensOnlyNoDupes( String s ) {
-      return new String( "HJ" );
+      String even_s = evensOnly(s);
+      String evens_no_dupes_s = removeDupes(even_s);
+      return evens_no_dupes_s;
    }
 
   /**
@@ -99,7 +125,9 @@ public class StringStuff {
    * @return  String containing the &quot;odd&quot; letters from the input without duplicates
    */
    public static String oddsOnlyNoDupes( String s ) {
-      return new String( "IK" );
+      String odd_s = oddsOnly(s);
+      String odds_no_dupes_s = removeDupes(odd_s);
+      return odds_no_dupes_s;
    }
 
   /**
@@ -109,12 +137,22 @@ public class StringStuff {
    * @return  String containing the reverse of the input string
    */
    public static String reverse( String s ) {
-      return new String( "kculc eht tahw" );
+      StringBuilder reversed_s = new StringBuilder(s);
+      return reversed_s.reverse().toString();
    }
 
 
    public static String removeDupes( String s ) {
-      return new String( "kculc eht tahw" );
+      StringBuilder no_dupes_word = new StringBuilder("");
+      for (int i = 0; i <= (s.length()-1); i++) {
+      	String char_there = Character.toString(s.charAt(i));
+      	if (no_dupes_word.toString().contains(char_there)) {
+      		continue;
+      	} else {
+      		no_dupes_word.append(s.charAt(i));
+      	}
+      }
+      return no_dupes_word.toString();
    }
 
   /**
