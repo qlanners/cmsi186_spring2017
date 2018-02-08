@@ -18,7 +18,7 @@
  *           -----  ----------  ------------  -----------------------------------------------------------
  *  @version 1.0.0  2017-01-19  B.J. Johnson  Initial writing and release
  *  @version 1.1.0  2017-01-22  B.J. Johnson  Fill in methods to make the program actually work
- *  @version 2.0.0  2018-02-01  Quinn Lanners Fileld in skeleton of methods to make methods functionable
+ *  @version 2.0.0  2018-02-01  Quinn Lanners Filled in skeleton of methods to make them function properly
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Set;
 import java.util.LinkedHashSet;
@@ -78,10 +78,12 @@ public class StringStuff {
       String s_lower = s.toLowerCase();
       StringBuilder even_word = new StringBuilder("");
       for (int i = 0; i<=(s_lower.length()-1); i++) {
-      	if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 == 0)) {
-      		even_word.append(s.charAt(i));
+        if ((alphabet.indexOf(s_lower.charAt(i))) >= 0) {
+          if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 == 0)) {
+      		  even_word.append(s.charAt(i));
+          }
       	}
-      }
+      }   
       return even_word.toString();
    }
 
@@ -97,9 +99,11 @@ public class StringStuff {
       String s_lower = s.toLowerCase();
       StringBuilder odd_word = new StringBuilder("");
       for (int i = 0; i<=(s_lower.length()-1); i++) {
-      	if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 != 0)) {
-      		odd_word.append(s.charAt(i));
-      	}
+      	if ((alphabet.indexOf(s_lower.charAt(i))) >= 0) {
+          if (((alphabet.indexOf(s_lower.charAt(i))+1) % 2 != 0)) {
+      		  odd_word.append(s.charAt(i));
+          }
+        }
       }
       return odd_word.toString();
    }
@@ -177,10 +181,17 @@ public class StringStuff {
       System.out.println( isPalindrome( pal5 ) );
       System.out.println( "evensOnly()        returns: " + evensOnly( "REHEARSALSZ" ) );
       System.out.println( "evensOnly()        returns: " + evensOnly( "REhearSALsz" ) );
+      System.out.println( "evensOnly()        returns: " + evensOnly( "WHATSup22Dude!!" ) );
+      System.out.println( "evensOnly()        returns: " + evensOnly( "MiNNesoTa19191" ) );            
       System.out.println( "evensOnlyNoDupes() returns: " + evensOnlyNoDupes( "REhearSALsz" ) );
+      System.out.println( "evensOnlyNoDupes() returns: " + evensOnlyNoDupes( "YYyd99KodEkkl)!!" ) );
       System.out.println( "oddsOnly()         returns: " + oddsOnly( "xylophones" ) );
       System.out.println( "oddsOnly()         returns: " + oddsOnly( "XYloPHonES" ) );
+      System.out.println( "oddsOnly()         returns: " + oddsOnly( "WHATSup22Dude!!" ) );
+      System.out.println( "oddsOnly()         returns: " + oddsOnly( "MiNNesoTa19191" ) );        
       System.out.println( "oddsOnlyNoDupes()  returns: " + oddsOnlyNoDupes( "XYloPHonES" ) );
+      System.out.println( "oddsOnlyNoDupes()  returns: " + oddsOnlyNoDupes( "Hellodudesanddudettes9999" ) );      
       System.out.println( "reverse()          returns: " + reverse( "REHEARSALSZ" ) );
+      System.out.println( "reverse()          returns: " + reverse( "234REHEARSALSZ??><" ) );      
    }
 }
