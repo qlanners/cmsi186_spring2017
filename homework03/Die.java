@@ -144,7 +144,12 @@ public class Die {
       System.out.println(test_die.toString());
       test_die.roll();
       System.out.println(test_die.toString());
-      test_die.setSides(27);
+      try {test_die.setSides(27);}
+      catch(IllegalArgumentException iae) {System.out.println("A die needs at leat 4 sides!");}  
+      try {test_die.setSides(-2);}
+      catch(IllegalArgumentException iae) {System.out.println("A die needs at leat 4 sides!");}   
+      try {test_die.setSides(33);}
+      catch(IllegalArgumentException iae) {System.out.println("A die needs at leat 4 sides!");}                   
       test_die.roll();
       System.out.println(test_die.toString());
       test_die.roll();
