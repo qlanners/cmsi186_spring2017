@@ -27,7 +27,7 @@ public class Clock {
    */
    private static final double DEFAULT_TIME_SLICE_IN_SECONDS = 60.0;
    private static final double INVALID_ARGUMENT_VALUE = -1.0;
-   private static final double hour_deg_sec = 0.00834;
+   private static final double hour_deg_sec = 0.008333333333333;
    private static final double minute_deg_sec = 0.1;
    private double elapsed_sec = 0;
    private double tick_size;
@@ -60,7 +60,11 @@ public class Clock {
    *  @throws  NumberFormatException
    */
    public double validateAngleArg( String argValue ) throws NumberFormatException {
-      return 0.0;
+      if ((Double.parseDouble(argValue) < 360) & (Double.parseDouble(argValue) >= 0)) {
+        return Double.parseDouble(argValue);
+      } else {
+        return -1.0;
+      }
    }
 
   /**
@@ -74,7 +78,7 @@ public class Clock {
    *  note: remember that the time slice, if it is small will cause the simulation
    *         to take a VERY LONG TIME to complete!
    */
-   public double validateTimeSliceArg( String argValue ) {
+   public double validateTimeSliceArg( String argValue ) throws NumberFormatException {
       if ((Double.parseDouble(argValue) <= 1800) & (Double.parseDouble(argValue) > 0)) {
         return Double.parseDouble(argValue);
       } else {
