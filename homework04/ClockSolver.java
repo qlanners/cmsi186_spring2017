@@ -57,11 +57,39 @@ public class ClockSolver {
                              "   Please try again..........." );
          System.exit( 1 );
       }
+      if ( 1 == args.length) {
+        try {
+          if (dummy_clock.validateAngleArg( args[0] ) == -1.0) {
+            System.out.println( "The AngleArg (arg[0]) must be [0-360) degrees");
+            System.exit(1);
+          }
+        }
+        catch(NumberFormatException nfe) {
+          System.out.println( "args must be numerical values");
+          System.exit(1);
+        }
+      }
       if ( 2== args.length ) {
-      	if (dummy_clock.validateTimeSliceArg( args[1] ) == -1.0) {
-      		System.out.println( "The TimeSliceArg (Arg[1]) must be between 0-1800 seconds");
-      		System.exit(1);
-      	}
+        try {
+          if (dummy_clock.validateAngleArg( args[0] ) == -1.0) {
+            System.out.println( "The AngleArg (arg[0]) must be [0-360) degrees");
+            System.exit(1);
+          }
+        }
+        catch(NumberFormatException nfe) {
+          System.out.println( "args must be numerical values");
+          System.exit(1);
+        }     
+      	try {
+          if (dummy_clock.validateTimeSliceArg( args[1] ) == -1.0) {
+      		  System.out.println( "The TimeSliceArg (arg[1]) must be (0-1800] seconds");
+      		  System.exit(1);
+      	  }
+        }
+        catch(NumberFormatException nfe) {
+          System.out.println( "args must be numerical values");
+          System.exit(1);          
+        }
       }
       if (args.length > 2) {
       	System.out.println( "Too many arguments. ClockSolver accepts either 1 or 2 arguments.");
@@ -89,7 +117,11 @@ public class ClockSolver {
       	args_time_slice = DEFAULT_TIME_SLICE_SECONDS;
       }
       Clock clock = new Clock(args_time_slice);
-      double desired_angle = (Math.abs(Double.parseDouble(args[0]) % 180));
+      double desired_angle = (Math.abs(Double.parseDouble(args[0]) % 360));
+      double desired_angle2 = 360 - desired_angle;
+      if (desired_angle2 < desired_angle) {
+        desired_angle = desired_angle2;
+      }      
       while( clock.getTotalSeconds() < (60*60*12) ) {
       	clock.tick();
       	clock.getHourHandAngle();
