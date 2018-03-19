@@ -1,0 +1,162 @@
+. 
+. 
+successful compilation 
+. 
+. 
+
+CLOCK CLASS TESTER PROGRAM
+--------------------------
+
+  Creating a new clock: 
+60.0
+5.5000000000000195
+00:01:00.00
+120.0
+33.00000000000012
+00:06:00.00
+420.0
+38.50000000000014
+420.0
+    New clock created: 00:07:00.00
+    Testing validateAngleArg()....
+      sending '  0 degrees', expecting double value   0.0 - got 0.0
+
+   Hello world, from the ClockSolver program!!
+
+
+   Sorry you must enter at least one argument
+   Usage: java ClockSolver <angle> [timeSlice]
+   Please try again...........
+
+   Hello world, from the ClockSolver program!!
+
+
+The AngleArg (arg[0]) must be [0-360) degrees
+
+   Hello world, from the ClockSolver program!!
+
+
+The TimeSliceArg (arg[1]) must be (0-1800] seconds
+
+   Hello world, from the ClockSolver program!!
+
+
+The TimeSliceArg (arg[1]) must be (0-1800] seconds
+
+   Hello world, from the ClockSolver program!!
+
+
+The AngleArg (arg[0]) must be [0-360) degrees
+
+   Hello world, from the ClockSolver program!!
+
+
+The TimeSliceArg (arg[1]) must be (0-1800] seconds
+
+   Hello world, from the ClockSolver program!!
+
+
+args must be numerical values
+
+   Hello world, from the ClockSolver program!!
+
+
+01:00:00.00
+11:00:00.00
+
+   Hello world, from the ClockSolver program!!
+
+
+01:00:00.00
+11:00:00.00
+
+   Hello world, from the ClockSolver program!!
+
+
+00:05:27.00
+01:00:00.00
+01:10:54.00
+01:10:55.00
+02:05:27.00
+02:16:22.00
+03:10:54.00
+03:10:55.00
+03:21:49.00
+04:16:22.00
+04:27:16.00
+05:21:49.00
+05:32:44.00
+06:27:16.00
+06:38:11.00
+07:32:44.00
+07:43:38.00
+08:38:11.00
+08:49:05.00
+09:43:38.00
+09:54:33.00
+10:49:05.00
+11:00:00.00
+11:54:33.00
+
+   Hello world, from the ClockSolver program!!
+
+
+
+   Hello world, from the ClockSolver program!!
+
+
+05:13:36.00
+06:19:03.00
+07:24:30.00
+08:29:57.00
+
+   Hello world, from the ClockSolver program!!
+
+
+00:13:40.29
+00:51:47.00
+01:19:07.60
+01:57:14.30
+02:24:34.90
+03:02:41.59
+03:30:02.19
+04:08:08.89
+04:35:29.49
+05:13:36.19
+05:40:56.79
+06:46:24.09
+07:51:51.39
+08:57:18.69
+10:02:45.99
+11:08:13.30
+
+   Hello world, from the ClockSolver program!!
+
+
+00:49:05.00
+01:54:32.50
+03:00:00.00
+04:05:27.50
+05:10:55.00
+06:49:05.00
+07:54:32.50
+09:00:00.00
+10:05:27.50
+11:10:55.00
+
+   Hello world, from the ClockSolver program!!
+
+
+00:32:43.79
+01:38:11.40
+04:54:32.39
+05:59:59.99
+07:05:27.59
+10:21:48.59
+11:27:16.20
+
+   Hello world, from the ClockSolver program!!
+
+
+03:00:00.00
+09:00:00.00
