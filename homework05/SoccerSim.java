@@ -3,7 +3,7 @@
  *  Purpose       :  The main program for the SoccerSim class
  *  @see
  *  @author       :  Quinn Lanners
- *  Date written  :  2018-02-27
+ *  Date written  :  2018-03-26
  *  Description   :  This class uses the Ball.java class and the Timer.java class to determine 
  *					 run a discrete simulation of balls on a flat field with a pole at location
  *        		     (10,10) and with a force of friction of 1%/second
