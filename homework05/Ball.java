@@ -1,8 +1,28 @@
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  File name     :  Ball.java
+ *  Purpose       :  Provides a class defining methods for the SoccerSim class
+ *  @author       :  Quinn Lanners
+ *  Date written  :  2018-03-26
+ *  Description   :  This class provides a bunch of methods which may be useful for the ClockSolver class
+ *                   for Homework 5.
+ *
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  IllegalArgumentException when the input arguments are "hinky"
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *  Revision Histor
+ *  ---------------
+ *            Rev      Date     Modified by:  Reason for change/modification
+ *           -----  ----------  ------------  -----------------------------------------------------------
+ *  @version 1.0.0  2018-03-26  Quinn Lanners Completed Class to function with SoccerSim.java
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
 import java.lang.Math;
 
 public class Ball {
 
-	public static final double field_size = 300;
+	public static final double field_size = 1000;
 	public double x_position;
 	public double y_position;
 	public double x_velocity;
