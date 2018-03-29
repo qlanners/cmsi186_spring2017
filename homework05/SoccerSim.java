@@ -89,7 +89,6 @@ public class SoccerSim {
 	public static void main( String args[] ) {
 		Soccer game = new Soccer();
 		game.handle_args( args );
-		System.out.println("Hi");
 		int number_of_balls = (args.length/4);
 		Ball[] balls = new Ball[(number_of_balls)];
 		int ball_number = 0;
