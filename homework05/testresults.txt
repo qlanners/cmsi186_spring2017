@@ -1,0 +1,735 @@
+.                                       
+.                                       
+======================================  
+... Testing Ball class ...              
+======================================  
+Ball Testing Started
+still in motion with:
+X position: 0.0
+Y Position: 0.0
+X velocity: 20.0
+Y velocity: 20.0
+.                                       
+.                                       
+.                                       
+.                                       
+======================================  
+... Testing Timer class ...                
+======================================  
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim no args...        
+======================================  
+Invalide number of arguments. Command line takes either a multiple of four
+commands to create args/4 balls or a multiple of four commands plus
+one additional command to create args/4 balls and a custom tick size.
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim one arg...        
+======================================  
+Invalide number of arguments. Command line takes either a multiple of four
+commands to create args/4 balls or a multiple of four commands plus
+one additional command to create args/4 balls and a custom tick size.
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim two args...       
+======================================  
+Invalide number of arguments. Command line takes either a multiple of four
+commands to create args/4 balls or a multiple of four commands plus
+one additional command to create args/4 balls and a custom tick size.
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim three args...     
+======================================  
+Invalide number of arguments. Command line takes either a multiple of four
+commands to create args/4 balls or a multiple of four commands plus
+one additional command to create args/4 balls and a custom tick size.
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim six args...       
+======================================  
+Invalide number of arguments. Command line takes either a multiple of four
+commands to create args/4 balls or a multiple of four commands plus
+one additional command to create args/4 balls and a custom tick size.
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim out of bounds...  
+======================================  
+The initial ball placement must be on the field
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim negative time slice...
+======================================  
+The time slice arg must be greater than 0
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim time slice too large...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 10.0
+Y Position: 10.0
+X velocity: 5.0
+Y velocity: 5.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Collision between ball 0 and pole
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim time slice value of zero...
+======================================  
+The time slice arg must be greater than 0
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim check for collision...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 10.0
+Y Position: 10.0
+X velocity: 1.0
+Y velocity: 1.0
+Ball 1 still in motion with:
+X position: 20.0
+Y Position: 20.0
+X velocity: -1.0
+Y velocity: -1.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Collision between ball 0 and pole
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim valid ball should come to rest...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 10.0
+Y Position: 10.0
+X velocity: 1.0
+Y velocity: 1.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Collision between ball 0 and pole
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim valid ball should go out of bounds...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 10.0
+Y Position: 10.0
+X velocity: 1000.0
+Y velocity: 1000.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Collision between ball 0 and pole
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim valid ball set six balls subsecond time slice...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 200.0
+Y Position: 200.0
+X velocity: 10.0
+Y velocity: 10.0
+Ball 1 still in motion with:
+X position: 100.0
+Y Position: 100.0
+X velocity: -100.0
+Y velocity: -100.0
+Ball 2 still in motion with:
+X position: 150.0
+Y Position: 150.0
+X velocity: 200.0
+Y velocity: 200.0
+Ball 3 still in motion with:
+X position: 175.0
+Y Position: 175.0
+X velocity: -110.0
+Y velocity: -110.0
+Ball 4 still in motion with:
+X position: 20.0
+Y Position: 20.0
+X velocity: 1.0
+Y velocity: 1.0
+Ball 5 still in motion with:
+X position: 50.0
+Y Position: 50.0
+X velocity: -5.0
+Y velocity: -5.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Elapsed Time = 00:00:00.10
+Ball 0 still in motion with:
+X position: 201.0
+Y Position: 201.0
+X velocity: 9.99
+Y velocity: 9.99
+Ball 1 still in motion with:
+X position: 90.0
+Y Position: 90.0
+X velocity: -99.9
+Y velocity: -99.9
+Ball 2 still in motion with:
+X position: 170.0
+Y Position: 170.0
+X velocity: 199.8
+Y velocity: 199.8
+Ball 3 still in motion with:
+X position: 164.0
+Y Position: 164.0
+X velocity: -109.89
+Y velocity: -109.89
+Ball 4 still in motion with:
+X position: 20.1
+Y Position: 20.1
+X velocity: 0.999
+Y velocity: 0.999
+Ball 5 still in motion with:
+X position: 49.5
+Y Position: 49.5
+X velocity: -4.995
+Y velocity: -4.995
+
+Elapsed Time = 00:00:00.20
+Ball 0 still in motion with:
+X position: 201.999
+Y Position: 201.999
+X velocity: 9.98001
+Y velocity: 9.98001
+Ball 1 still in motion with:
+X position: 80.00999999999999
+Y Position: 80.00999999999999
+X velocity: -99.8001
+Y velocity: -99.8001
+Ball 2 still in motion with:
+X position: 189.98000000000002
+Y Position: 189.98000000000002
+X velocity: 199.6002
+Y velocity: 199.6002
+Ball 3 still in motion with:
+X position: 153.011
+Y Position: 153.011
+X velocity: -109.78011000000001
+Y velocity: -109.78011000000001
+Ball 4 still in motion with:
+X position: 20.199900000000003
+Y Position: 20.199900000000003
+X velocity: 0.998001
+Y velocity: 0.998001
+Ball 5 still in motion with:
+X position: 49.0005
+Y Position: 49.0005
+X velocity: -4.990005
+Y velocity: -4.990005
+
+Elapsed Time = 00:00:00.30
+Ball 0 still in motion with:
+X position: 202.99700099999998
+Y Position: 202.99700099999998
+X velocity: 9.97002999
+Y velocity: 9.97002999
+Ball 1 still in motion with:
+X position: 70.02999
+Y Position: 70.02999
+X velocity: -99.7002999
+Y velocity: -99.7002999
+Ball 2 still in motion with:
+X position: 209.94002
+Y Position: 209.94002
+X velocity: 199.4005998
+Y velocity: 199.4005998
+Ball 3 still in motion with:
+X position: 142.032989
+Y Position: 142.032989
+X velocity: -109.67032989
+Y velocity: -109.67032989
+Ball 4 still in motion with:
+X position: 20.299700100000003
+Y Position: 20.299700100000003
+X velocity: 0.997002999
+Y velocity: 0.997002999
+Ball 5 still in motion with:
+X position: 48.5014995
+Y Position: 48.5014995
+X velocity: -4.985014995
+Y velocity: -4.985014995
+
+Elapsed Time = 00:00:00.40
+Ball 0 still in motion with:
+X position: 203.99400399899997
+Y Position: 203.99400399899997
+X velocity: 9.96005996001
+Y velocity: 9.96005996001
+Ball 1 still in motion with:
+X position: 60.05996001
+Y Position: 60.05996001
+X velocity: -99.60059960010001
+Y velocity: -99.60059960010001
+Ball 2 still in motion with:
+X position: 229.88007998
+Y Position: 229.88007998
+X velocity: 199.20119920020002
+Y velocity: 199.20119920020002
+Ball 3 still in motion with:
+X position: 131.065956011
+Y Position: 131.065956011
+X velocity: -109.56065956011001
+Y velocity: -109.56065956011001
+Ball 4 still in motion with:
+X position: 20.399400399900003
+Y Position: 20.399400399900003
+X velocity: 0.996005996001
+Y velocity: 0.996005996001
+Ball 5 still in motion with:
+X position: 48.0029980005
+Y Position: 48.0029980005
+X velocity: -4.980029980005
+Y velocity: -4.980029980005
+
+Elapsed Time = 00:00:00.50
+Ball 0 still in motion with:
+X position: 204.99000999500097
+Y Position: 204.99000999500097
+X velocity: 9.95009990004999
+Y velocity: 9.95009990004999
+Ball 1 still in motion with:
+X position: 50.09990004999
+Y Position: 50.09990004999
+X velocity: -99.50099900049992
+Y velocity: -99.50099900049992
+Ball 2 still in motion with:
+X position: 249.80019990002
+Y Position: 249.80019990002
+X velocity: 199.00199800099983
+Y velocity: 199.00199800099983
+Ball 3 still in motion with:
+X position: 120.109890054989
+Y Position: 120.109890054989
+X velocity: -109.4510989005499
+Y velocity: -109.4510989005499
+Ball 4 still in motion with:
+X position: 20.499000999500105
+Y Position: 20.499000999500105
+X velocity: 0.995009990004999
+Y velocity: 0.995009990004999
+Ball 5 still in motion with:
+X position: 47.5049950024995
+Y Position: 47.5049950024995
+X velocity: -4.975049950024995
+Y velocity: -4.975049950024995
+
+Elapsed Time = 00:00:00.60
+Ball 0 still in motion with:
+X position: 205.98501998500598
+Y Position: 205.98501998500598
+X velocity: 9.940149800149939
+Y velocity: 9.940149800149939
+Ball 1 still in motion with:
+X position: 40.149800149940006
+Y Position: 40.149800149940006
+X velocity: -99.40149800149942
+Y velocity: -99.40149800149942
+Ball 2 still in motion with:
+X position: 269.70039970012
+Y Position: 269.70039970012
+X velocity: 198.80299600299884
+Y velocity: 198.80299600299884
+Ball 3 still in motion with:
+X position: 109.164780164934
+Y Position: 109.164780164934
+X velocity: -109.34164780164934
+Y velocity: -109.34164780164934
+Ball 4 still in motion with:
+X position: 20.598501998500605
+Y Position: 20.598501998500605
+X velocity: 0.994014980014994
+Y velocity: 0.994014980014994
+Ball 5 still in motion with:
+X position: 47.007490007497
+Y Position: 47.007490007497
+X velocity: -4.9700749000749695
+Y velocity: -4.9700749000749695
+
+Elapsed Time = 00:00:00.70
+Ball 0 still in motion with:
+X position: 206.97903496502096
+Y Position: 206.97903496502096
+X velocity: 9.93020965034979
+Y velocity: 9.93020965034979
+Ball 1 still in motion with:
+X position: 30.209650349790063
+Y Position: 30.209650349790063
+X velocity: -99.30209650349792
+Y velocity: -99.30209650349792
+Ball 2 still in motion with:
+X position: 289.5806993004199
+Y Position: 289.5806993004199
+X velocity: 198.60419300699584
+Y velocity: 198.60419300699584
+Ball 3 still in motion with:
+X position: 98.23061538476907
+Y Position: 98.23061538476907
+X velocity: -109.2323061538477
+Y velocity: -109.2323061538477
+Ball 4 still in motion with:
+X position: 20.697903496502104
+Y Position: 20.697903496502104
+X velocity: 0.993020965034979
+Y velocity: 0.993020965034979
+Ball 5 still in motion with:
+X position: 46.5104825174895
+Y Position: 46.5104825174895
+X velocity: -4.965104825174895
+Y velocity: -4.965104825174895
+
+Elapsed Time = 00:00:00.79
+Ball 0 still in motion with:
+X position: 207.97205593005594
+Y Position: 207.97205593005594
+X velocity: 9.92027944069944
+Y velocity: 9.92027944069944
+Ball 1 still in motion with:
+X position: 20.279440699440272
+Y Position: 20.279440699440272
+X velocity: -99.20279440699443
+Y velocity: -99.20279440699443
+Ball 2 still in motion with:
+X position: 289.5806993004199
+Y Position: 289.5806993004199
+X velocity: 198.60419300699584
+Y velocity: 198.60419300699584
+Ball 3 still in motion with:
+X position: 98.23061538476907
+Y Position: 98.23061538476907
+X velocity: -109.2323061538477
+Y velocity: -109.2323061538477
+Ball 4 still in motion with:
+X position: 20.697903496502104
+Y Position: 20.697903496502104
+X velocity: 0.993020965034979
+Y velocity: 0.993020965034979
+Ball 5 still in motion with:
+X position: 46.5104825174895
+Y Position: 46.5104825174895
+X velocity: -4.965104825174895
+Y velocity: -4.965104825174895
+Collision between ball 1 and ball 4
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim valid ball set five balls 1.234 second time slice...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 200.0
+Y Position: 200.0
+X velocity: 10.0
+Y velocity: 10.0
+Ball 1 still in motion with:
+X position: 100.0
+Y Position: 100.0
+X velocity: -100.0
+Y velocity: -100.0
+Ball 2 still in motion with:
+X position: 175.0
+Y Position: 175.0
+X velocity: -110.0
+Y velocity: -110.0
+Ball 3 still in motion with:
+X position: 20.0
+Y Position: 20.0
+X velocity: 1.0
+Y velocity: 1.0
+Ball 4 still in motion with:
+X position: 50.0
+Y Position: 50.0
+X velocity: -5.0
+Y velocity: -5.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Elapsed Time = 00:00:01.23
+Ball 0 still in motion with:
+X position: 212.34
+Y Position: 212.34
+X velocity: 9.8766
+Y velocity: 9.8766
+Ball 1 still in motion with:
+X position: -23.400000000000006
+Y Position: -23.400000000000006
+X velocity: -98.766
+Y velocity: -98.766
+Ball 2 still in motion with:
+X position: 39.25999999999999
+Y Position: 39.25999999999999
+X velocity: -108.6426
+Y velocity: -108.6426
+Ball 3 still in motion with:
+X position: 21.234
+Y Position: 21.234
+X velocity: 0.98766
+Y velocity: 0.98766
+Ball 4 still in motion with:
+X position: 43.83
+Y Position: 43.83
+X velocity: -4.9383
+Y velocity: -4.9383
+
+Elapsed Time = 00:00:02.46
+Ball 0 still in motion with:
+X position: 224.5277244
+Y Position: 224.5277244
+X velocity: 9.754722756
+Y velocity: 9.754722756
+Ball 1 still in motion with:
+X position: -145.277244
+Y Position: -145.277244
+X velocity: -97.54722756000001
+Y velocity: -97.54722756000001
+Ball 2 still in motion with:
+X position: -94.8049684
+Y Position: -94.8049684
+X velocity: -107.301950316
+Y velocity: -107.301950316
+Ball 3 still in motion with:
+X position: 22.45277244
+Y Position: 22.45277244
+X velocity: 0.9754722755999999
+Y velocity: 0.9754722755999999
+Ball 4 still in motion with:
+X position: 37.736137799999995
+Y Position: 37.736137799999995
+X velocity: -4.877361378
+Y velocity: -4.877361378
+
+Elapsed Time = 00:00:03.70
+Ball 0 still in motion with:
+X position: 236.565052280904
+Y Position: 236.565052280904
+X velocity: 9.634349477190959
+Y velocity: 9.634349477190959
+Ball 1 still in motion with:
+X position: -265.65052280904
+Y Position: -265.65052280904
+X velocity: -96.3434947719096
+Y velocity: -96.3434947719096
+Ball 2 still in motion with:
+X position: -227.215575089944
+Y Position: -227.215575089944
+X velocity: -105.97784424910056
+Y velocity: -105.97784424910056
+Ball 3 still in motion with:
+X position: 23.6565052280904
+Y Position: 23.6565052280904
+X velocity: 0.963434947719096
+Y velocity: 0.963434947719096
+Ball 4 still in motion with:
+X position: 31.717473859547994
+Y Position: 31.717473859547994
+X velocity: -4.8171747385954795
+Y velocity: -4.8171747385954795
+
+Elapsed Time = 00:00:04.93
+Ball 0 still in motion with:
+X position: 248.45383953575765
+Y Position: 248.45383953575765
+X velocity: 9.515461604642423
+Y velocity: 9.515461604642423
+Ball 1 still in motion with:
+X position: -384.53839535757646
+Y Position: -384.53839535757646
+X velocity: -95.15461604642424
+Y velocity: -95.15461604642424
+Ball 2 still in motion with:
+X position: -357.99223489333406
+Y Position: -357.99223489333406
+X velocity: -104.67007765106665
+Y velocity: -104.67007765106665
+Ball 3 still in motion with:
+X position: 24.845383953575762
+Y Position: 24.845383953575762
+X velocity: 0.9515461604642423
+Y velocity: 0.9515461604642423
+Ball 4 still in motion with:
+X position: 25.773080232121174
+Y Position: 25.773080232121174
+X velocity: -4.757730802321212
+Y velocity: -4.757730802321212
+
+Elapsed Time = 00:00:06.17
+Ball 0 still in motion with:
+X position: 260.19591915588643
+Y Position: 260.19591915588643
+X velocity: 9.398040808441136
+Y velocity: 9.398040808441136
+Ball 1 still in motion with:
+X position: -501.95919155886395
+Y Position: -501.95919155886395
+X velocity: -93.98040808441137
+Y velocity: -93.98040808441137
+Ball 2 still in motion with:
+X position: -487.1551107147503
+Y Position: -487.1551107147503
+X velocity: -103.37844889285249
+Y velocity: -103.37844889285249
+Ball 3 still in motion with:
+X position: 26.019591915588638
+Y Position: 26.019591915588638
+X velocity: 0.9398040808441136
+Y velocity: 0.9398040808441136
+Ball 4 still in motion with:
+X position: 25.773080232121174
+Y Position: 25.773080232121174
+X velocity: -4.757730802321212
+Y velocity: -4.757730802321212
+Collision between ball 3 and ball 4
+.                                       
+.                                       
+======================================  
+... Testing SoccerSim valid ball set ten balls 10 second time slice...
+======================================  
+Initial Report at Start of Game:
+Elapsed Time = 00:00:00.00
+Ball 0 still in motion with:
+X position: 150.0
+Y Position: 150.0
+X velocity: 10.0
+Y velocity: 10.0
+Ball 1 still in motion with:
+X position: 100.0
+Y Position: 100.0
+X velocity: -100.0
+Y velocity: -100.0
+Ball 2 still in motion with:
+X position: 200.0
+Y Position: 200.0
+X velocity: 200.0
+Y velocity: 200.0
+Ball 3 still in motion with:
+X position: 250.0
+Y Position: 250.0
+X velocity: -110.0
+Y velocity: -110.0
+Ball 4 still in motion with:
+X position: 20.0
+Y Position: 20.0
+X velocity: 1.0
+Y velocity: 1.0
+Ball 5 still in motion with:
+X position: 50.0
+Y Position: 50.0
+X velocity: -5.0
+Y velocity: -5.0
+Ball 6 still in motion with:
+X position: -100.0
+Y Position: -100.0
+X velocity: 200.0
+Y velocity: 200.0
+Ball 7 still in motion with:
+X position: -200.0
+Y Position: -200.0
+X velocity: 300.0
+Y velocity: 300.0
+Ball 8 still in motion with:
+X position: -110.0
+Y Position: -110.0
+X velocity: 20.0
+Y velocity: 20.0
+Ball 9 still in motion with:
+X position: 1.0
+Y Position: 1.0
+X velocity: 50.0
+Y velocity: 50.0
+Pole Location at rest at:
+X position: 10.0
+Y Position: 10.0
+
+Elapsed Time = 00:00:10.00
+Ball 0 still in motion with:
+X position: 250.0
+Y Position: 250.0
+X velocity: 9.0
+Y velocity: 9.0
+Ball 1 still in motion with:
+X position: 100.0
+Y Position: 100.0
+X velocity: -100.0
+Y velocity: -100.0
+Ball 2 still in motion with:
+X position: 200.0
+Y Position: 200.0
+X velocity: 200.0
+Y velocity: 200.0
+Ball 3 still in motion with:
+X position: 250.0
+Y Position: 250.0
+X velocity: -110.0
+Y velocity: -110.0
+Ball 4 still in motion with:
+X position: 20.0
+Y Position: 20.0
+X velocity: 1.0
+Y velocity: 1.0
+Ball 5 still in motion with:
+X position: 50.0
+Y Position: 50.0
+X velocity: -5.0
+Y velocity: -5.0
+Ball 6 still in motion with:
+X position: -100.0
+Y Position: -100.0
+X velocity: 200.0
+Y velocity: 200.0
+Ball 7 still in motion with:
+X position: -200.0
+Y Position: -200.0
+X velocity: 300.0
+Y velocity: 300.0
+Ball 8 still in motion with:
+X position: -110.0
+Y Position: -110.0
+X velocity: 20.0
+Y velocity: 20.0
+Ball 9 still in motion with:
+X position: 1.0
+Y Position: 1.0
+X velocity: 50.0
+Y velocity: 50.0
+Collision between ball 0 and ball 3
+.                                       
+.                                       
+======================================  
+... End of SoccerSim Testing...         
+======================================  
