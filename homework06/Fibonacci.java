@@ -85,15 +85,17 @@ public class Fibonacci {
       }
 
       // Used a BrobInt array to keep track of which number we are one
-      BrobInt[] brobs = new BrobInt[maxCount];
-      brobs[0] = new BrobInt( "0" );
-      brobs[1] = new BrobInt( "1" );
-      int i = 2;
-      while(i < maxCount) {
-        brobs[i] = brobs[(i-1)].add(brobs[i-2]);
+      BrobInt brob1 = new BrobInt("0");
+      BrobInt brob2 = new BrobInt("1");
+      BrobInt brob3 = new BrobInt("1");
+      int i = 3;
+      while(i <= maxCount) {
+        brob3 = brob1.add(brob2);
+        brob1 = brob2;
+        brob2 = brob3;
         i = i + 1;
       }
-      System.out.println(brobs[maxCount-1].toString());
+      System.out.println(brob3.toString());
 
 
       System.exit( 0 );
