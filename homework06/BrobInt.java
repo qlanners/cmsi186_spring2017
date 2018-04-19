@@ -1,9 +1,9 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * File name  :  BrobInt.java
  * Purpose    :  Learning exercise to implement arbitrarily large numbers and their operations
- * @author    :  B.J. Johnson
- * Date       :  2017-04-04
- * Description:  @see <a href='http://bjohnson.lmu.build/cmsi186web/homework06.html'>Assignment Page</a>
+ * @author    :  Quinn Lanners
+ * Date       :  2018-04-18
+ * Description:  A class that is able to handle operations with large numbers through storing their values in int[] format
  * Notes      :  None
  * Warnings   :  None
  *
@@ -17,6 +17,8 @@
  *                                     validateDigits, two reversers, and valueOf methods; revamped equals
  *                                     and compareTo methods to use the Java String methods; ready to
  *                                     start work on subtractByte and subtractInt methods
+ *  2.0.0  2018-04-18 Quinn Lanners Filled in the template script to perform functions. Implemented using int[]
+ *                                  and added a few additional methods
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Arrays;
@@ -36,7 +38,7 @@ public class BrobInt {
    public static final BrobInt NINE     = new BrobInt(  "9" );      /// Constant for "nine"
    public static final BrobInt TEN      = new BrobInt( "10" );      /// Constant for "ten"
 
-  /// Some constants for other intrinsic data types
+  /// Some constants for other intrinsic data types (did not use in my code...)
   ///  these can help speed up the math if they fit into the proper memory space
    // public static final BrobInt MAX_INT  = new BrobInt( new Integer( Integer.MAX_VALUE ).toString() );
    // public static final BrobInt MIN_INT  = new BrobInt( new Integer( Integer.MIN_VALUE ).toString() );
@@ -159,17 +161,18 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt add( BrobInt gint ) {
-    int larger_abs_value = abs_value.compareTo( gint.abs_value );
+    BrobInt tester = new BrobInt(internalValue);
+    int larger_abs_value = tester.compareTo(gint);
     int addition_case = 0;
     if ((sign == 1) && (gint.sign == 1)) {
       addition_case = 1;
     }
     else if ((sign == 0) && (gint.sign == 1)) {
       addition_case = 2;
+      larger_abs_value = -1 * larger_abs_value;      
     }
     else if ((sign == 1) && (gint.sign == 0)) {
       addition_case = 3;
-      larger_abs_value = -1 * larger_abs_value;
     }
     BrobInt summation_brob = null;
     switch (addition_case) {
@@ -419,10 +422,9 @@ public class BrobInt {
           added_array_sums = (100000000 + first[i]) - second[i];
           reverse_carry = 1;
         }
-        added_array_sums_string = Integer.toString(added_array_sums);
-        sum[i] = Integer.parseInt(added_array_sums_string);
+        sum[i] = added_array_sums;
         i = i + 1;
-        }
+      }
       i = smallest_array_length;
       while (i<largest_array_length) {
         if (reverse_carry == 1) {
@@ -447,7 +449,7 @@ public class BrobInt {
         added_array_sums_string = Integer.toString(added_array_sums);
         sum[i] = Integer.parseInt(added_array_sums_string);
         i = i + 1;
-        }
+      }
       i = smallest_array_length;
       while (i<largest_array_length) {
         if (reverse_carry == 1) {
@@ -473,6 +475,9 @@ public class BrobInt {
       string_sum = string_sum + next_array;
       i = i + 1;
     }
+    if (larger_value == 0) {
+      string_sum = "0";
+    }
     BrobInt BrobInt_sum = new BrobInt(string_sum);
     return BrobInt_sum; 
    }
@@ -483,7 +488,8 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtract( BrobInt gint ) {
-    int larger_abs_value = abs_value.compareTo( gint.abs_value );
+    BrobInt tester = new BrobInt(internalValue);
+    int larger_abs_value = tester.compareTo(gint);
     int addition_case = 0;
     if ((sign == 1) && (gint.sign == 0)) {
       addition_case = 1;
@@ -515,7 +521,78 @@ public class BrobInt {
    *  @return BrobInt that is the product of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt multiply( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+    int doubled = 0;
+    int halved = 0;
+    int largest_array_length = 0;
+    int smallest_array_length = 0;
+    int longer_array = 0; //0 if first array is longer, 1 if equal, 2 if second array is longer
+    if (intVersion.length > gint.intVersion.length) {
+      largest_array_length = intVersion.length;
+      smallest_array_length = gint.intVersion.length;
+    }
+    else if (intVersion.length == gint.intVersion.length) {
+      largest_array_length = intVersion.length;
+      smallest_array_length = gint.intVersion.length;
+      longer_array = 1;
+    }      
+    else {
+      largest_array_length = gint.intVersion.length;
+      smallest_array_length = intVersion.length;
+      longer_array = 2;
+    }
+    int prod_array_length = (largest_array_length+(largest_array_length-smallest_array_length));
+    int[] product = new int[prod_array_length];
+    int i = 0;
+    int t = 0;
+    String carry = "";
+    int mult_array_prod = 0;
+    String mult_array_prod_string = "";
+    int shortened_array_sums = 0;
+    while (i<smallest_array_length) {
+      doubled = intVersion[i];
+      while (t<largest_array_length) {
+        halved = gint.intVersion[t];
+        while (halved >= 1) {
+          if ((halved % 2) != 0) {
+            mult_array_prod += doubled;
+          }
+          halved = halved / 2;
+          doubled = doubled * 2;
+        }
+        if (carry.length() > 0) {
+          mult_array_prod = mult_array_prod + Integer.parseInt(carry);
+        }
+        mult_array_prod_string = Integer.toString(mult_array_prod);
+        carry = "";
+        while (mult_array_prod_string.length() > 8) {
+          carry = carry + mult_array_prod_string.substring(0,1);
+          mult_array_prod_string = mult_array_prod_string.substring(1);
+        }
+        product[(i+t)] = Integer.parseInt(mult_array_prod_string);
+        t += 1;
+      }
+      i += 1;
+    }
+    String string_prod = "";
+    if ((sign ==1 && gint.sign == 0) || (sign == 0 && gint.sign == 1)) {
+      string_prod = "-";
+    }
+    String next_array = "";
+    if (carry.length() > 0) {
+      string_prod = string_prod + carry;
+    }
+    string_prod = string_prod + Integer.toString(product[prod_array_length-1]);
+    i = 2;
+    while (i<=prod_array_length) {
+      next_array = Integer.toString(product[prod_array_length-i]);
+      while (next_array.length() < 8) {
+        next_array = "0" + next_array;
+      }
+      string_prod = string_prod + next_array;
+      i = i + 1;
+    }
+    BrobInt BrobInt_prod = new BrobInt(string_prod);
+    return BrobInt_prod;   
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -543,19 +620,24 @@ public class BrobInt {
    *  NOTE: this method performs a lexicographical comparison using the java String "compareTo()" method
    *        THAT was easy.....
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-   public int compareTo( BrobInt gint ) {
-      int compared = internalValue.compareTo( gint.internalValue );
-      if (compared < 0) {
-        compared = -1;
-      }
-      else if (compared > 0) {
-        compared = 1;
-      }
-      else {
-        compared = 0;
-      }
-      return compared;
-   }
+    public int compareTo( BrobInt gint ) {
+       if( internalValue.length() > gint.internalValue.length() ) {
+          return 1;
+       } else if( internalValue.length() < gint.internalValue.length() ) {
+          return (-1);
+       } else {
+          for( int i = 0; i < internalValue.length(); i++ ) {
+             Character a = new Character( internalValue.charAt(i) );
+             Character b = new Character( gint.internalValue.charAt(i) );
+             if( new Character(a).compareTo( new Character(b) ) > 0 ) {
+                return 1;
+             } else if( new Character(a).compareTo( new Character(b) ) < 0 ) {
+                return (-1);
+             }
+          }
+       }
+       return 0;
+    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to check if a BrobInt passed as argument is equal to this BrobInt
@@ -611,19 +693,23 @@ public class BrobInt {
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  the main method redirects the user to the test class
    *  @param  args  String array which contains command line arguments
-   *  note:  we don't really care about these
+   *  note:  we don't really care about these. used to fix small bugs in code without having to use full test harness script
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public static void main( String[] args ) {
       System.out.println( "\n  Hello, world, from the BrobInt program!!\n" );
       System.out.println( "\n   You should run your tests from the BrobIntTester...\n" );
       BrobInt gi = new BrobInt(args[0]);
       BrobInt go = new BrobInt(args[1]);
-      BrobInt sum = gi.add(go);
-      BrobInt sub = gi.subtract(go);
+      System.out.println(gi.compareTo(go));
+      BrobInt sum = gi.add(go);    
+      BrobInt sub = gi.subtract(go);       
+      //BrobInt prod = gi.multiply(go);
+      System.out.println("Hello");       
       System.out.println(gi.toString());
       System.out.println(go.toString());
       System.out.println(sum.toString());
       System.out.println(sub.toString());
+      //System.out.println(prod.toString());
       // BrobInt revgi = gi.reverser();
       // BrobInt revgi2 = reverser(gi);
       // int compared = gi.compareTo(revgi);
