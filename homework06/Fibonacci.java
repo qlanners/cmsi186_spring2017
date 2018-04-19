@@ -1,9 +1,9 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * File name  :  Fibonacci.java
  * Purpose    :  Find the "nth" Fibonacci number given an argument, using BrobInt class
- * @author    :  B.J. Johnson
- * Date       :  2017-04-17
- * Description:  @see <a href='http://bjohnson.lmu.build/cmsi186web/homework06.html'>Assignment Page</a>
+ * @author    :  Quinn Lanners
+ * Date       :  2018-04-19
+ * Description:  Returns the nth Fibonacci number (where n is passed as an argument). The sequence starts as 0 1 1 2 3 ... and uses BrobInts to deal with the large size numbers
  * Notes      :  None
  * Warnings   :  None
  *
@@ -13,6 +13,7 @@
  *   Ver      Date     Modified by:  Reason for change or modification
  *  -----  ----------  ------------  ---------------------------------------------------------------------
  *  1.0.0  2017-04-17  B.J. Johnson  Initial writing and begin coding
+ *  2.0.0  2018-04-19  Quinn Lanners Completed the meat of the code, adding the necessary components to compute the nth Fibonacci number (passed as an argument)
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -83,6 +84,7 @@ public class Fibonacci {
          System.out.println( "\n                This may take me a while; please be patient!!\n\n" );
       }
 
+      // Used a BrobInt array to keep track of which number we are one
       BrobInt[] brobs = new BrobInt[maxCount];
       brobs[0] = new BrobInt( "0" );
       brobs[1] = new BrobInt( "1" );
