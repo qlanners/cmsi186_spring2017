@@ -1,9 +1,9 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * File name  :  BrobIntTester.java
  * Purpose    :  Test Harness for the BrobInt java class
- * @author    :  B.J. Johnson
- * Date       :  2017-04-05
- * Description:  @see <a href='http://bjohnson.lmu.build/cmsi186web/homework06.html'>Assignment Page</a>
+ * @author    :  Quinn Lanners
+ * Date       :  2018-04-18
+ * Description:  A test script that runs a number of tests to check to functionality and accuracy of methods from the BrobInt.java class
  * Notes      :  None
  * Warnings   :  None
  *
@@ -14,10 +14,11 @@
  *  -----  ----------  ------------  ---------------------------------------------------------------------
  *  1.0.0  2017-04-05  B.J. Johnson  Initial writing and release
  *  1.1.0  2017-04-13  B.J. Johnson  Added new BrobInt instances to check addition; refactored to
- *                                     check the new versions of compareTo and equals; verified that all
+ *                                     check the new versions of compare and equals; verified that all
  *                                     additions work for both small and large numbers, as well as for
  *                                     values of different lengths and including same-sign negative value
  *                                     additions; ready to start subtractByte and subtractInt methods
+ * 2.0.0   2018-04-18 Quinn Lanners Edited the Test script to work with the nomenclature of the BrobInt.java class that I created (specifically dealing with numbers in int[] form)
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
