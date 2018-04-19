@@ -28,6 +28,7 @@ public class BrobInt {
    public static final char[] accepted_digits = new char[] {'0','1','2','3','4','5','6','7','8','9'};
    public static final BrobInt ZERO     = new BrobInt(  "0" );      /// Constant for "zero"
    public static final BrobInt ONE      = new BrobInt(  "1" );      /// Constant for "one"
+   public static final BrobInt NEG_ONE  = new BrobInt( "-1" );
    public static final BrobInt TWO      = new BrobInt(  "2" );      /// Constant for "two"
    public static final BrobInt THREE    = new BrobInt(  "3" );      /// Constant for "three"
    public static final BrobInt FOUR     = new BrobInt(  "4" );      /// Constant for "four"
@@ -168,11 +169,11 @@ public class BrobInt {
       addition_case = 1;
     }
     else if ((sign == 0) && (gint.sign == 1)) {
-      addition_case = 2;
-      larger_abs_value = -1 * larger_abs_value;      
+      addition_case = 2;   
     }
     else if ((sign == 1) && (gint.sign == 0)) {
       addition_case = 3;
+      larger_abs_value = -1 * larger_abs_value;      
     }
     BrobInt summation_brob = null;
     switch (addition_case) {
@@ -601,7 +602,30 @@ public class BrobInt {
    *  @return BrobInt that is the dividend of this BrobInt divided by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt divide( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+    BrobInt int_abs = new BrobInt(abs_value);
+    BrobInt gint_abs = new BrobInt(gint.abs_value);
+    BrobInt divisor = ONE;
+    BrobInt product = gint_abs.multiply(divisor);
+    BrobInt test_prod = product;
+    if (test_prod.compareTo(int_abs) > 0) {
+      divisor = ZERO;
+    }
+    else {
+      while (product.compareTo(int_abs) < 0) {
+        divisor = divisor.add(ONE);
+        product = gint_abs.multiply(divisor);
+      }
+      if (product.compareTo(int_abs) > 0) {
+        divisor = divisor.subtract(ONE);
+      }
+      if (test_prod.compareTo(int_abs) > 0) {
+        divisor = ZERO;
+      }
+    }
+    if ((sign == 1 && gint.sign == 0) || (sign == 0 && gint.sign ==1)) {
+      divisor = divisor.multiply(NEG_ONE);
+    }
+    return divisor;
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -610,7 +634,10 @@ public class BrobInt {
    *  @return BrobInt that is the remainder of division of this BrobInt by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt remainder( BrobInt gint ) {
-      throw new UnsupportedOperationException( "\n         Sorry, that operation is not yet implemented." );
+    BrobInt internal = new BrobInt(internalValue);
+    BrobInt divisor = internal.divide(gint);
+    BrobInt product = divisor.multiply(gint);
+    return internal.subtract(product);
    }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -703,13 +730,14 @@ public class BrobInt {
       System.out.println(gi.compareTo(go));
       BrobInt sum = gi.add(go);    
       BrobInt sub = gi.subtract(go);       
-      //BrobInt prod = gi.multiply(go);
-      System.out.println("Hello");       
+      BrobInt prod = gi.multiply(go);
+      BrobInt quotient = gi.divide(go);     
       System.out.println(gi.toString());
       System.out.println(go.toString());
       System.out.println(sum.toString());
       System.out.println(sub.toString());
-      //System.out.println(prod.toString());
+      System.out.println(prod.toString());
+      System.out.println(quotient.toString());
       // BrobInt revgi = gi.reverser();
       // BrobInt revgi2 = reverser(gi);
       // int compared = gi.compareTo(revgi);
