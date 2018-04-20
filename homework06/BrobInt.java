@@ -162,8 +162,9 @@ public class BrobInt {
    *  @return BrobInt that is the sum of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt add( BrobInt gint ) {
-    BrobInt tester = new BrobInt(internalValue);
-    int larger_abs_value = tester.compareTo(gint);
+    BrobInt tester = new BrobInt(abs_value);
+    BrobInt gint_abs = new BrobInt(gint.abs_value);
+    int larger_abs_value = tester.compareTo(gint_abs);
     int addition_case = 0;
     if ((sign == 1) && (gint.sign == 1)) {
       addition_case = 1;
@@ -489,8 +490,9 @@ public class BrobInt {
    *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt subtract( BrobInt gint ) {
-    BrobInt tester = new BrobInt(internalValue);
-    int larger_abs_value = tester.compareTo(gint);
+    BrobInt tester = new BrobInt(abs_value);
+    BrobInt gint_abs = new BrobInt(gint.abs_value);
+    int larger_abs_value = tester.compareTo(gint_abs);
     int addition_case = 0;
     if ((sign == 1) && (gint.sign == 0)) {
       addition_case = 1;
@@ -733,14 +735,16 @@ public class BrobInt {
       System.out.println(gi.compareTo(go));
       BrobInt sum = gi.add(go);    
       BrobInt sub = gi.subtract(go);       
+      System.out.println("Before Mult");
       BrobInt prod = gi.multiply(go);
-      BrobInt quotient = gi.divide(go);     
+      System.out.println("Before Divide");
+      // BrobInt quotient = gi.divide(go);     
       System.out.println(gi.toString());
       System.out.println(go.toString());
       System.out.println(sum.toString());
       System.out.println(sub.toString());
       System.out.println(prod.toString());
-      System.out.println(quotient.toString());
+      // System.out.println(quotient.toString());
       // BrobInt revgi = gi.reverser();
       // BrobInt revgi2 = reverser(gi);
       // int compared = gi.compareTo(revgi);
