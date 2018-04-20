@@ -522,8 +522,8 @@ public class BrobInt {
    *  @return BrobInt that is the product of the value of this BrobInt and the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt multiply( BrobInt gint ) {
-    int doubled = 0;
-    int halved = 0;
+    BrobInt doubled = ZERO;
+    BrobInt halved = ZERO;
     int largest_array_length = 0;
     int smallest_array_length = 0;
     int longer_array = 0; //0 if first array is longer, 1 if equal, 2 if second array is longer
@@ -541,35 +541,37 @@ public class BrobInt {
       smallest_array_length = intVersion.length;
       longer_array = 2;
     }
-    int prod_array_length = (largest_array_length+(largest_array_length-smallest_array_length));
-    int[] product = new int[prod_array_length];
+    BrobInt product = ZERO;
+    BrobInt array_prod = ZERO;
     int i = 0;
     int t = 0;
-    String carry = "";
-    int mult_array_prod = 0;
     String mult_array_prod_string = "";
-    int shortened_array_sums = 0;
-    while (i<smallest_array_length) {
-      doubled = intVersion[i];
-      while (t<largest_array_length) {
-        halved = gint.intVersion[t];
-        while (halved >= 1) {
-          if ((halved % 2) != 0) {
-            mult_array_prod += doubled;
+    int to_add = 0;
+    String[] to_add_zeros = null;
+    while (i<largest_array_length) {
+      doubled = new BrobInt(Integer.toString(intVersion[i]));
+      t = 0;
+      while (t<smallest_array_length) {
+        halved = new BrobInt(Integer.toString(gint.intVersion[t]));
+        while (halved.intVersion[0] >= 1) {
+          if ((halved.intVersion[0] % 2) != 0) {
+            array_prod = array_prod.add(doubled);
           }
-          halved = halved / 2;
-          doubled = doubled * 2;
+          halved = new BrobInt( Integer.toString(halved.intVersion[0] / 2));
+          doubled = doubled.add(doubled);
         }
-        if (carry.length() > 0) {
-          mult_array_prod = mult_array_prod + Integer.parseInt(carry);
+        to_add = (8*(i+t));
+        to_add_zeros = new String[to_add];
+        for (int z = 0; z<to_add; z++) {
+          to_add_zeros[z] = "0";
         }
-        mult_array_prod_string = Integer.toString(mult_array_prod);
-        carry = "";
-        while (mult_array_prod_string.length() > 8) {
-          carry = carry + mult_array_prod_string.substring(0,1);
-          mult_array_prod_string = mult_array_prod_string.substring(1);
+        mult_array_prod_string = array_prod.toString();
+        for (int z = 0; z<to_add; z++) {
+          mult_array_prod_string += to_add_zeros[z];
         }
-        product[(i+t)] = Integer.parseInt(mult_array_prod_string);
+        array_prod = new BrobInt(mult_array_prod_string);
+        product = product.add(array_prod);
+        array_prod = ZERO;
         t += 1;
       }
       i += 1;
@@ -578,20 +580,7 @@ public class BrobInt {
     if ((sign ==1 && gint.sign == 0) || (sign == 0 && gint.sign == 1)) {
       string_prod = "-";
     }
-    String next_array = "";
-    if (carry.length() > 0) {
-      string_prod = string_prod + carry;
-    }
-    string_prod = string_prod + Integer.toString(product[prod_array_length-1]);
-    i = 2;
-    while (i<=prod_array_length) {
-      next_array = Integer.toString(product[prod_array_length-i]);
-      while (next_array.length() < 8) {
-        next_array = "0" + next_array;
-      }
-      string_prod = string_prod + next_array;
-      i = i + 1;
-    }
+    string_prod = string_prod + product.toString();
     BrobInt BrobInt_prod = new BrobInt(string_prod);
     return BrobInt_prod;   
    }
@@ -647,24 +636,38 @@ public class BrobInt {
    *  NOTE: this method performs a lexicographical comparison using the java String "compareTo()" method
    *        THAT was easy.....
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-    public int compareTo( BrobInt gint ) {
-       if( internalValue.length() > gint.internalValue.length() ) {
-          return 1;
-       } else if( internalValue.length() < gint.internalValue.length() ) {
-          return (-1);
-       } else {
-          for( int i = 0; i < internalValue.length(); i++ ) {
-             Character a = new Character( internalValue.charAt(i) );
-             Character b = new Character( gint.internalValue.charAt(i) );
-             if( new Character(a).compareTo( new Character(b) ) > 0 ) {
-                return 1;
-             } else if( new Character(a).compareTo( new Character(b) ) < 0 ) {
-                return (-1);
-             }
-          }
-       }
-       return 0;
-    }
+   public int compareTo( BrobInt gint ) {
+
+     // handle the signs here
+      if( 1 == sign && 0 == gint.sign ) {
+         return -1;
+      } else if( 0 == sign && 1 == gint.sign ) {
+         return 1;
+      }
+
+     // the signs are the same at this point
+     // check the length and return the appropriate value
+     //   1 means this is longer than gint, hence larger
+     //  -1 means gint is longer than this, hence larger
+      if( internalValue.length() > gint.internalValue.length() ) {
+         return 1;
+      } else if( internalValue.length() < gint.internalValue.length() ) {
+         return (-1);
+
+     // otherwise, they are the same length, so compare absolute values
+      } else {
+         for( int i = 0; i < internalValue.length(); i++ ) {
+            Character a = Character.valueOf( internalValue.charAt(i) );
+            Character b = Character.valueOf( gint.internalValue.charAt(i) );
+            if( Character.valueOf(a).compareTo( Character.valueOf(b) ) > 0 ) {
+               return 1;
+            } else if( Character.valueOf(a).compareTo( Character.valueOf(b) ) < 0 ) {
+               return (-1);
+            }
+         }
+      }
+      return 0;
+   }
 
   /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    *  Method to check if a BrobInt passed as argument is equal to this BrobInt
