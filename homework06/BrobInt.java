@@ -525,6 +525,7 @@ public class BrobInt {
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
    public BrobInt multiply( BrobInt gint ) {
     BrobInt doubled = ZERO;
+    BrobInt doubled_changing = ZERO;
     BrobInt halved = ZERO;
     int largest_array_length = 0;
     int smallest_array_length = 0;
@@ -553,9 +554,11 @@ public class BrobInt {
     while (i<largest_array_length) {
       if (longer_array == 0 || longer_array == 1) {
         doubled = new BrobInt(Integer.toString(intVersion[i]));
+        doubled_changing = doubled;
       }
       else {
         doubled = new BrobInt(Integer.toString(gint.intVersion[i]));
+        doubled_changing = doubled;
       }
       t = 0;
       while (t<smallest_array_length) {
@@ -564,16 +567,17 @@ public class BrobInt {
         }
        else {
           halved = new BrobInt(Integer.toString(intVersion[t]));
-        }        
+        }
+        doubled_changing = doubled;    
         while (halved.intVersion[0] >= 1) {
           if ((halved.intVersion[0] % 2) != 0) {
-            array_prod = array_prod.add(doubled);
+            array_prod = array_prod.add(doubled_changing);
           }
           halved = new BrobInt( Integer.toString(halved.intVersion[0] / 2));
-          doubled = doubled.add(doubled);
+          doubled_changing = doubled_changing.add(doubled_changing);
         }
         to_add = (8*(i+t));
-        to_add_zeros = new String[to_add];
+        to_add_zeros = new String[to_add]; //to deal with carry from multiplying arrays of different levels
         for (int z = 0; z<to_add; z++) {
           to_add_zeros[z] = "0";
         }
@@ -589,7 +593,7 @@ public class BrobInt {
       i += 1;
     }
     String string_prod = "";
-    if ((sign ==1 && gint.sign == 0) || (sign == 0 && gint.sign == 1)) {
+    if ((sign ==1 && gint.sign == 0) || (sign == 0 && gint.sign == 1)) { //to deal with sign of product
       string_prod = "-";
     }
     string_prod = string_prod + product.toString();
@@ -743,7 +747,7 @@ public class BrobInt {
    public static void main( String[] args ) {
       System.out.println( "\n  Hello, world, from the BrobInt program!!\n" );
       System.out.println( "\n   You should run your tests from the BrobIntTester...\n" );
-      BrobIntTester.main(args);
+      BrobIntTester.main();
       // BrobInt gi = new BrobInt(args[0]);
       // BrobInt go = new BrobInt(args[1]);
       // System.out.println(gi.compareTo(go));
