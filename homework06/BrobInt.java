@@ -123,7 +123,7 @@ public class BrobInt {
         validated = true;
       }
       else {
-        throw new IllegalArgumentException( "\n         Sorry, that operation is not yet implemented." );
+        throw new IllegalArgumentException( "\n         Sorry, that input is not valid. Ensure that you have entered a valid integer number." );
       }
       int i = 1;
       while (i<internalValue.length()) {
@@ -131,7 +131,7 @@ public class BrobInt {
           validated = true;
         }
         else {
-          throw new IllegalArgumentException( "\n         Sorry, that operation is not yet implemented." );
+          throw new IllegalArgumentException( "\n         Sorry, that input is not valid. Ensure that you have entered a valid integer number." );
         }
         i++;
       }
@@ -551,10 +551,20 @@ public class BrobInt {
     int to_add = 0;
     String[] to_add_zeros = null;
     while (i<largest_array_length) {
-      doubled = new BrobInt(Integer.toString(intVersion[i]));
+      if (longer_array == 0 || longer_array == 1) {
+        doubled = new BrobInt(Integer.toString(intVersion[i]));
+      }
+      else {
+        doubled = new BrobInt(Integer.toString(gint.intVersion[i]));
+      }
       t = 0;
       while (t<smallest_array_length) {
-        halved = new BrobInt(Integer.toString(gint.intVersion[t]));
+        if (longer_array == 0 || longer_array == 1) {
+          halved = new BrobInt(Integer.toString(gint.intVersion[t]));
+        }
+       else {
+          halved = new BrobInt(Integer.toString(intVersion[t]));
+        }        
         while (halved.intVersion[0] >= 1) {
           if ((halved.intVersion[0] % 2) != 0) {
             array_prod = array_prod.add(doubled);
@@ -739,13 +749,15 @@ public class BrobInt {
       // System.out.println("Before Mult");
       // BrobInt prod = gi.multiply(go);
       // System.out.println("Before Divide");
-      // // BrobInt quotient = gi.divide(go);     
+      // BrobInt quotient = gi.divide(go);
+      // BrobInt left_over = gi.remainder(go);     
       // System.out.println(gi.toString());
       // System.out.println(go.toString());
       // System.out.println(sum.toString());
       // System.out.println(sub.toString());
       // System.out.println(prod.toString());
       // System.out.println(quotient.toString());
+      // System.out.println(left_over.toString());
       // BrobInt revgi = gi.reverser();
       // BrobInt revgi2 = reverser(gi);
       // int compared = gi.compareTo(revgi);
