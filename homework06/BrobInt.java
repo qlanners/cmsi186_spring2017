@@ -602,7 +602,10 @@ public class BrobInt {
    *  @param  gint         BrobInt to divide this by
    *  @return BrobInt that is the dividend of this BrobInt divided by the one passed in
    *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-   public BrobInt divide( BrobInt gint ) {
+   public BrobInt divide( BrobInt gint ) throws IllegalArgumentException {
+    if (gint.abs_value.equals(ZERO.abs_value)) {
+      throw new IllegalArgumentException( "Cannot divide by 0");
+    }
     BrobInt int_abs = new BrobInt(abs_value);
     BrobInt gint_abs = new BrobInt(gint.abs_value);
     BrobInt divisor = ONE;
@@ -749,7 +752,11 @@ public class BrobInt {
       // System.out.println("Before Mult");
       // BrobInt prod = gi.multiply(go);
       // System.out.println("Before Divide");
-      // BrobInt quotient = gi.divide(go);
+      // BrobInt quotient = ZERO;
+      // try {quotient = gi.divide(go);
+      // }
+      // catch (IllegalArgumentException e) { System.out.println(e.toString());
+      // }
       // BrobInt left_over = gi.remainder(go);     
       // System.out.println(gi.toString());
       // System.out.println(go.toString());
